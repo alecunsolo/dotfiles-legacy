@@ -10,9 +10,14 @@
     ~/.vimrc: vimrc
     ~/.oh-my-zsh: oh-my-zsh
     ~/.zshrc: zshrc
+    ~/.zsh-functions/:
+      glob: true
+      path: zsh-functions/*
+      create: true
     ~/.tmux.conf: tmux.conf
     ~/.gitconfig: gitconfig
     ~/.ssh/config: ssh/config
     ~/.ssh/config.d/:
       glob: true
       path: ssh/config.d/*
+

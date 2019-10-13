@@ -1,0 +1,7 @@
+if (( ${+commands[dig]} )); then
+    dig +short myip.opendns.com @resolver1.opendns.com
+    return 0
+else
+    print "dig not installed" >&2
+    return 1
+fi
