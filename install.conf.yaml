@@ -1,6 +1,7 @@
 # vim:ft=yaml ts=2 sw=2 sts=2
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [tools/setup-ssh.sh, Initialize ssh directory]
 - defaults:
     link:
       relink: true
