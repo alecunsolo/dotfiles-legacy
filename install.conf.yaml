@@ -17,6 +17,10 @@
       glob: true
       path: zsh/zsh-functions/*
       create: true
+    ~/.zshrc.d/:
+      glob: true
+      path: zsh/zshrc.d/*
+      create: true
     ~/.tmux.conf: tmux.conf
     ~/.gitconfig: gitconfig
     ~/.ssh/config: ssh/config

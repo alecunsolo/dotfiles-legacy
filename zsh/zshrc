@@ -70,16 +70,17 @@ DEFAULT_USER="acunsolo"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     # Common
-    history
     git
     git-flow
-    systemd
+    history
     man
-    sudo
-    tmux
     rsync
-    zsh_reload
+    sudo
+    systemd
     themes
+    tmux
+    zsh-autosuggestions
+    zsh_reload
 )
 
 if [[ -d ~/.zshrc.d ]]; then
