@@ -30,6 +30,13 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+" Allow cursor movements during insert mode
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
+inoremap <C-d> <end>
+
 " Relative line numbers
 set relativenumber
 
