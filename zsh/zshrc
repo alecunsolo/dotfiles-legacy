@@ -131,3 +131,5 @@ alias sysdreload='systemctl --user daemon-reload'
 alias find='noglob find'
 alias sudo='sudo '
 alias vzsh="vim ~/.zshrc"
+# if bat is installed use it instead of cat
+(( ${+commands[bat]} )) && alias cat='bat'
