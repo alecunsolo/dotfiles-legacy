@@ -9,6 +9,9 @@
     ~/.dotfiles: ''
     ~/.vimrc: vimrc
     ~/.oh-my-zsh: zsh/oh-my-zsh
+    ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions:
+      create: true
+      path: zsh/plugins/zsh-autosuggestions
     ~/.zshrc: zsh/zshrc
     ~/.zsh-functions/:
       glob: true
