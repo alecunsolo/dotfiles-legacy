@@ -8,11 +8,11 @@
 - link:
     ~/.dotfiles: ''
     ~/.vimrc: vimrc
-    ~/.oh-my-zsh: oh-my-zsh
-    ~/.zshrc: zshrc
+    ~/.oh-my-zsh: zsh/oh-my-zsh
+    ~/.zshrc: zsh/zshrc
     ~/.zsh-functions/:
       glob: true
-      path: zsh-functions/*
+      path: zsh/zsh-functions/*
       create: true
     ~/.tmux.conf: tmux.conf
     ~/.gitconfig: gitconfig
