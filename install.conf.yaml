@@ -1,8 +1,11 @@
 # vim:ft=yaml ts=2 sw=2 sts=2
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
 - defaults:
     link:
       relink: true
 - link:
     ~/.dotfiles: ''
     ~/.vimrc: vimrc
+    ~/.oh-my-zsh: oh-my-zsh
 
