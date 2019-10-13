@@ -9,4 +9,5 @@
     ~/.vimrc: vimrc
     ~/.oh-my-zsh: oh-my-zsh
     ~/.zshrc: zshrc
+    ~/.tmux.conf: tmux.conf
 
