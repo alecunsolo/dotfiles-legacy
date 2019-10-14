@@ -1,0 +1,5 @@
+if [[ -n "$1" ]]; then
+    echo "$1" | base64 -d
+    return $?
+fi
+return 1
