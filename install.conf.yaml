@@ -15,6 +15,9 @@
     ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting:
       create: true
       path: zsh/plugins/zsh-syntax-highlighting
+    ~/.oh-my-zsh/custom/themes/agnoster.zsh-theme:
+      create: true
+      path: zsh/themes/agnoster.zsh-theme
     ~/.zshrc: zsh/zshrc
     ~/.zsh-functions/:
       glob: true
