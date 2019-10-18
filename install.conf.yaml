@@ -12,6 +12,9 @@
     ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions:
       create: true
       path: zsh/plugins/zsh-autosuggestions
+    ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting:
+      create: true
+      path: zsh/plugins/zsh-syntax-highlighting
     ~/.zshrc: zsh/zshrc
     ~/.zsh-functions/:
       glob: true
