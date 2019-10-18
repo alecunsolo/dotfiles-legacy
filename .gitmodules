@@ -13,3 +13,7 @@
 	url = https://github.com/zsh-users/zsh-autosuggestions
 	branch = master
 	ignore = dirty
+[submodule "zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+	branch = master
