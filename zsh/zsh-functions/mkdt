@@ -1,0 +1,3 @@
+local dir
+dir=$(mktemp -d)
+cd $dir
