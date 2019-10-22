@@ -204,7 +204,7 @@ prompt_dir() {
   else
     lbg=red
   fi
-  prompt_segment $lbg $CURRENT_FG '%~'
+  prompt_segment $lbg $CURRENT_FG '%(4~|.../%3~|%~)'
 }
 
 # Virtualenv: current working virtualenv
