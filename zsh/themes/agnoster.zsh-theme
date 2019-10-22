@@ -242,12 +242,21 @@ prompt_aws() {
   esac
 }
 
+prompt_kube() {
+  [[ $KUBE_PS1_ENABLED != "true" ]] && return
+  case "$KUBE_PS1_CONTEXT" in
+    *-prod|*prod*) prompt_segment red white "$KUBE_PS1_SYMBOL_DEFAULT $KUBE_PS1_CONTEXT/$KUBE_PS1_NAMESPACE" ;;
+    *) prompt_segment cyan black "$KUBE_PS1_SYMBOL_DEFAULT $KUBE_PS1_CONTEXT/$KUBE_PS1_NAMESPACE" ;;
+  esac
+}
+
 ## Main prompt
 build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_virtualenv
   prompt_aws
+  prompt_kube
   prompt_context
   prompt_dir
   prompt_git
