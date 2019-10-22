@@ -134,3 +134,5 @@ alias sudo='sudo '
 alias vzsh="vim ~/.zshrc"
 # if bat is installed use it instead of cat
 (( ${+commands[bat]} )) && alias cat='bat'
+# Add alias to prune local branches that where merged
+alias gplb="git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d"
