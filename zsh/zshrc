@@ -124,6 +124,7 @@ setopt autonamedirs
 setopt noclobber
 setopt appendcreate
 
+# Common aliases
 alias grep='grep --color=auto'
 alias cp='cp -i --reflink=auto'
 alias mv='mv -i'
@@ -132,11 +133,12 @@ alias sysdreload='systemctl --user daemon-reload'
 alias find='noglob find'
 alias sudo='sudo '
 alias vzsh="vim ~/.zshrc"
-# if bat is installed use it instead of cat
-(( ${+commands[bat]} )) && alias cat='bat'
 # Add alias to prune local branches that where merged
 alias gplb="git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d"
 
 # Turn off kube prompt
 KUBE_PS1_ENABLED=false
+
+path=(~/bin $path)
+typeset -U path
 
