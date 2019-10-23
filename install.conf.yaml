@@ -2,6 +2,12 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [tools/setup-ssh.sh, Initialize ssh directory]
+- clean:
+  -  '~'
+  - '~/.zshrc.d'
+  - '~/.ssh/config.d'
+  - '~/.gitconfig.d'
+  - '~/.config/kube'
 - defaults:
     link:
       relink: true
