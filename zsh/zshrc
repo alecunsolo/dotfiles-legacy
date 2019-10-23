@@ -136,3 +136,7 @@ alias vzsh="vim ~/.zshrc"
 (( ${+commands[bat]} )) && alias cat='bat'
 # Add alias to prune local branches that where merged
 alias gplb="git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d"
+
+# Turn off kube prompt
+KUBE_PS1_ENABLED=false
+
