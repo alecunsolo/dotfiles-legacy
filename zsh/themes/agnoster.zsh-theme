@@ -244,9 +244,12 @@ prompt_aws() {
 
 prompt_kube() {
   [[ $KUBE_PS1_ENABLED != "true" ]] && return
+  local kp
+  kp="$KUBE_PS1_SYMBOL_DEFAULT %B$KUBE_PS1_CONTEXT%b"
+  [[ $KUBE_PS1_NAMESPACE != "default" ]] && kp="$kp/$KUBE_PS1_NAMESPACE"
   case "$KUBE_PS1_CONTEXT" in
-    *-prod|*prod*) prompt_segment red white "$KUBE_PS1_SYMBOL_DEFAULT $KUBE_PS1_CONTEXT/$KUBE_PS1_NAMESPACE" ;;
-    *) prompt_segment cyan black "$KUBE_PS1_SYMBOL_DEFAULT $KUBE_PS1_CONTEXT/$KUBE_PS1_NAMESPACE" ;;
+    *-prod|*prod*) prompt_segment red white "$kp" ;;
+    *) prompt_segment cyan black "$kp" ;;
   esac
 }
 
