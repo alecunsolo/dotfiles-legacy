@@ -6,9 +6,16 @@ set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
 
+" Line numbers
 set number
+set relativenumber
+
 set nowrap
 syntax on
+
+" Whitespaces
+set list
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:⌴
 
 " Search stuff
 set hlsearch
@@ -36,9 +43,6 @@ inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
 inoremap <C-d> <end>
-
-" Relative line numbers
-set relativenumber
 
 filetype plugin indent on
 
