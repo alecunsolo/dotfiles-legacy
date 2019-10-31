@@ -249,7 +249,7 @@ prompt_kube() {
   [[ $KUBE_PS1_NAMESPACE != "default" ]] && kp="$kp/$KUBE_PS1_NAMESPACE"
   case "$KUBE_PS1_CONTEXT" in
     *-prod|*prod*) prompt_segment red white "$kp" ;;
-    *) prompt_segment cyan black "$kp" ;;
+    *) prompt_segment cyan white "$kp" ;;
   esac
 }
 
