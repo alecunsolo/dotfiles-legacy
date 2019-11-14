@@ -135,6 +135,12 @@ alias sudo='sudo '
 alias vzsh="vim ~/.zshrc"
 # Add alias to prune local branches that where merged
 alias gplb="git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d"
+if [[ -d ~/.dotfiles ]]; then
+    alias dot='cd ~/.dotfiles'
+fi
+if [[ -d ~/.dotfiles-local ]]; then
+    alias dotl='cd ~/.dotfiles-local'
+fi
 
 # Turn off kube prompt
 KUBE_PS1_ENABLED=false
