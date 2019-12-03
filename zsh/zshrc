@@ -147,4 +147,5 @@ KUBE_PS1_ENABLED=false
 
 path=(~/bin $path)
 typeset -U path
+export ZSH_TMUX_UNICODE=true
 
