@@ -120,3 +120,5 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 endif
 
+" add yaml stuffs
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
