@@ -9,6 +9,9 @@ set termencoding=utf-8
 " Hidden
 set hidden
 
+" Open new vsplit to the right
+set splitright
+
 " Line numbers
 set number
 set relativenumber
@@ -96,6 +99,7 @@ noremap <Leader>yP "+p
 " Duplicate line
 noremap <Leader>y yyp
 inoremap <Leader>y <Esc>yypi
+
 " Delete line
 noremap <Leader>d dd
 inoremap <Leader>d <C-O>dd
