@@ -137,12 +137,12 @@ call plug#end()
 " vimgutter relies on this value to refresh signs
 set updatetime=100
 
-" Ctrl-n toggle NerdTree
-map <C-n> :NERDTreeToggle<CR>
+" Leader-N toggle NerdTree
+map <leader>N :NERDTreeToggle<CR>
 
 " If no files were specified fire NerdTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Show powerline fonts
 let g:airline_powerline_fonts = 1
