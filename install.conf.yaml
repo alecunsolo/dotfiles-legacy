@@ -8,6 +8,7 @@
   - '~/.ssh/config.d'
   - '~/.gitconfig.d'
   - '~/.config/kube'
+  - '~/.oh-my-zsh'
 - defaults:
     link:
       relink: true
