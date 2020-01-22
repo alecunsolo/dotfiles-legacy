@@ -134,6 +134,10 @@ Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
+" For OSX
+" set rtp+=/usr/local/opt/fzf/bin
+set rtp+=/usr/local/opt/fzf
+
 " vimgutter relies on this value to refresh signs
 set updatetime=100
 
