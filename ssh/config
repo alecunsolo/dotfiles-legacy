@@ -3,3 +3,4 @@ Host *
     AddKeysToAgent yes
     ServerAliveInterval 30
     ServerAliveCountMax 3
+    IPQoS=throughput
