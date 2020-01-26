@@ -2,10 +2,12 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [tools/setup-ssh.sh, Initialize ssh directory]
+  - [tools/setup-gpg.sh, Initialize gpg directory]
 - clean:
   -  '~'
   - '~/.zshrc.d'
   - '~/.ssh/config.d'
+  - '~/.gnupg'
   - '~/.gitconfig.d'
   - '~/.config/kube'
   - '~/.oh-my-zsh'
@@ -40,4 +42,5 @@
     ~/.ssh/config.d/:
       glob: true
       path: ssh/config.d/*
+    ~/.gnupg/gpg.conf: gpg/gpg.conf
 
