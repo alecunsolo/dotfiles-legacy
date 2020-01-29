@@ -150,3 +150,4 @@ path=(~/bin $path)
 typeset -U path
 export ZSH_TMUX_UNICODE=true
 
+autoload -Uz compinit && compinit -i
