@@ -59,6 +59,12 @@ inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
 inoremap <C-d> <end>
 
+" Easy buffer navigation
+noremap <leader>h <C-w>h
+noremap <leader>j <C-w>j
+noremap <leader>k <C-w>k
+noremap <leader>l <C-w>l
+
 filetype plugin indent on
 
 " Tabs
