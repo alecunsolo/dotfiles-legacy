@@ -138,6 +138,7 @@ Plug 'tpope/vim-commentary'
 " Installed with pacman
 " Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " For OSX
@@ -177,7 +178,7 @@ command! Config execute ":e $MYVIMRC"
 iabbr _AC Alessandro Cunsolo
 iabbr __AC alessandro.cunsolo@gmail.com
 
-iabbr ERR 
+iabbr ERR
 \if err != nil {
 \<CR>
 \<CR>}
@@ -223,3 +224,7 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
+augroup vagrant
+    au!
+    au BufRead,BufNewFile Vagrantfile setlocal filetype=ruby ts=2 sts=2 expandtab
+augroup END
