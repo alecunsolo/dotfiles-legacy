@@ -150,4 +150,9 @@ path=(~/bin $path)
 typeset -U path
 export ZSH_TMUX_UNICODE=true
 
+# Use NeoVim instead of Vim
+if (( $+commands[nvim] )); then
+    alias vim='nvim'
+fi
+
 autoload -Uz compinit && compinit -i
