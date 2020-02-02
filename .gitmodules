@@ -18,3 +18,8 @@
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 	branch = master
 	ignore = dirty
+[submodule "tmux/tpm"]
+	path = tmux/tpm
+	url = https://github.com/tmux-plugins/tpm
+	branch = master
+	ignore = dirty

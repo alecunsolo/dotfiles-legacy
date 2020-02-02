@@ -37,6 +37,9 @@
       path: zsh/zshrc.d/*
       create: true
     ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux/plugins/tpm:
+      create: true
+      path: tmux/tpm
     ~/.gitconfig: gitconfig
     ~/.ssh/config: ssh/config
     ~/.ssh/config.d/:
