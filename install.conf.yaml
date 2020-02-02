@@ -11,6 +11,7 @@
   - '~/.gitconfig.d'
   - '~/.config/kube'
   - '~/.oh-my-zsh'
+  - '~/.config/nvim'
 - defaults:
     link:
       relink: true
@@ -46,4 +47,7 @@
       glob: true
       path: ssh/config.d/*
     ~/.gnupg/gpg.conf: gpg/gpg.conf
+    ~/.config/nvim/init.vim:
+      create: true
+      path: init.vim
 
