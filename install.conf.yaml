@@ -36,7 +36,7 @@
       glob: true
       path: zsh/zshrc.d/*
       create: true
-    ~/.tmux.conf: tmux.conf
+    ~/.tmux.conf: tmux/tmux.conf
     ~/.gitconfig: gitconfig
     ~/.ssh/config: ssh/config
     ~/.ssh/config.d/:
