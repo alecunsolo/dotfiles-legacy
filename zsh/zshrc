@@ -148,7 +148,6 @@ KUBE_PS1_ENABLED=false
 
 path=(~/bin $path)
 typeset -U path
-export ZSH_TMUX_UNICODE=true
 
 # Use NeoVim instead of Vim
 if (( $+commands[nvim] )); then
