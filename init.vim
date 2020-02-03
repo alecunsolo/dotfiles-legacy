@@ -4,6 +4,11 @@ set tabstop=4 shiftwidth=4 expandtab
 " <Esc> alternatives for insert mode
 inoremap jk <Esc>
 inoremap kj <Esc>
+vnoremap jk <Esc>
+vnoremap kj <Esc>
+
+" Hide unsaved buffers
+set hidden
 
 " init.vim management
 command! ConfReload execute "source $MYVIMRC"
