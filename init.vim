@@ -1,5 +1,5 @@
 " Four spaces is enough for a tab
-set tabstop=4 shiftwidth=4 expandtab
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 " <Esc> alternatives for insert mode
 inoremap jk <Esc>
@@ -47,6 +47,7 @@ let mapleader=','
 " Search stuff
 set ignorecase
 set smartcase
+set showmatch
 
 " Quickly hide hightlight
 nnoremap <leader><space> :noh<cr>
@@ -139,6 +140,27 @@ let g:go_autotype_info = 1
 " Vagrant
 augroup vagrant
     autocmd!
-    autocmd BufRead,BufNewFile Vagrantfile setlocal filetype=ruby ts=2 sts=2 expandtab
+    autocmd BufRead,BufNewFile Vagrantfile setlocal filetype=ruby ts=2 sts=2 sw=2 expandtab
 augroup END
 
+" Remove trailing spaces
+" http://vimcasts.org/episodes/tidying-whitespace/
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+
+" Clipboard
+if has("macunix")
+  set clipboard=unnamed
+elseif has("unix")
+  set clipboard=unnamedplus
+endif
