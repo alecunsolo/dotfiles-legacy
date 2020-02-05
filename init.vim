@@ -164,3 +164,11 @@ if has("macunix")
 elseif has("unix")
   set clipboard=unnamedplus
 endif
+
+" Open file in the same directory of the currently open one
+" http://vimcasts.org/episodes/the-edit-command/
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
