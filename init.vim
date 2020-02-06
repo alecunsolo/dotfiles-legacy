@@ -49,6 +49,11 @@ set ignorecase
 set smartcase
 set showmatch
 
+" File management
+set autowrite
+set autoread
+nnoremap s :w<CR>
+
 " Quickly hide hightlight
 nnoremap <leader><space> :noh<cr>
 
@@ -56,8 +61,8 @@ nnoremap <leader><space> :noh<cr>
 set pastetoggle=<F2>
 
 " Duplicate line
-noremap <Leader>y yyp
-inoremap <Leader>y <Esc>yypi
+noremap <Leader>y "zY"zp
+inoremap <Leader>y <Esc>"zY"zpi
 
 " Delete line
 noremap <Leader>d dd
@@ -80,6 +85,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'christoomey/vim-tmux-navigator' " Tmux integration
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
 
 " VSC
 Plug 'tpope/vim-fugitive'
@@ -100,6 +106,7 @@ call plug#end()
 syntax enable
 colorscheme solarized
 set background=dark
+set cursorline
 
 " vim-gitgutter use this value to update signs
 set updatetime=100
