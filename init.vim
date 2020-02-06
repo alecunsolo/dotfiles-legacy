@@ -73,6 +73,9 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
 " Interface
 Plug 'vim-airline/vim-airline' " Status bar
+Plug 'altercation/vim-colors-solarized' " Colour scheme
+
+" Misc
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'christoomey/vim-tmux-navigator' " Tmux integration
 Plug 'tpope/vim-surround'
@@ -92,6 +95,11 @@ Plug 'hashivim/vim-terraform'
 Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
 
 call plug#end()
+
+" Colour scheme
+syntax enable
+colorscheme solarized
+set background=dark
 
 " vim-gitgutter use this value to update signs
 set updatetime=100
