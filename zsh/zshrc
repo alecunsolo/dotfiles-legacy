@@ -93,7 +93,7 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export EDITOR=vim
+export EDITOR=nvim
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -134,6 +134,8 @@ alias sysdreload='systemctl --user daemon-reload'
 alias find='noglob find'
 alias sudo='sudo '
 alias vzsh="vim ~/.zshrc"
+alias gfop="git fetch origin --prune"
+
 # Add alias to prune local branches that where merged
 alias gplb="git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d"
 if [[ -d ~/.dotfiles ]]; then
