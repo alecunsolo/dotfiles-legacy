@@ -158,6 +158,12 @@ augroup vagrant
     autocmd BufRead,BufNewFile Vagrantfile setlocal filetype=ruby ts=2 sts=2 sw=2 expandtab
 augroup END
 
+" Jenkinsfile
+augroup jenkins
+    autocmd!
+    autocmd BufRead,BufNewFile Jenkinsfile setlocal filetype=groovy ts=4 sts=4 sw=4 expandtab
+augroup END
+
 " Remove trailing spaces
 " http://vimcasts.org/episodes/tidying-whitespace/
 function! <SID>StripTrailingWhitespaces()
