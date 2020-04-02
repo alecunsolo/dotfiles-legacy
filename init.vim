@@ -54,6 +54,10 @@ set autowrite
 set autoread
 nnoremap s :w<CR>
 
+" Window management
+nnoremap <leader>c :close<CR>
+nnoremap <leader>o :only<CR>
+
 " Quickly hide hightlight
 nnoremap <leader><space> :noh<cr>
 
