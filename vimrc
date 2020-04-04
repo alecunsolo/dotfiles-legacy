@@ -1,46 +1,24 @@
-" Vim, not Vi
-set nocompatible
+" Four spaces is enough for a tab
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
-" Encoding
-set encoding=utf-8
-set fileencoding=utf-8
-set termencoding=utf-8
+" <Esc> alternatives for insert mode
+inoremap jk <Esc>
+inoremap kj <Esc>
+vnoremap jk <Esc>
+vnoremap kj <Esc>
 
-" Hidden
+" Hide unsaved buffers
 set hidden
 
-" Open new vsplit to the right
-set splitright
+" init.vim management
+command! ConfReload execute "source $MYVIMRC"
+command! ConfEdit execute ":edit $MYVIMRC"
 
 " Line numbers
 set number
 set relativenumber
 
-set nowrap
-syntax on
-
-" Whitespaces
-set list
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:⌴
-
-" Autosave
-set autowrite
-
-" Esc
-inoremap jj <Esc>
-
-" Leader
-let mapleader=','
-
-" Search stuff
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-set showmatch
-nnoremap <leader><space> :noh<cr>
-
-" Cool kids don't use arrows
+" No arrows
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -49,154 +27,114 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+" Wrap stuff
+set nowrap
 nnoremap j gj
 nnoremap k gk
 
-" Allow cursor movements during insert mode
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-inoremap <C-l> <C-o>l
-inoremap <C-d> <end>
+" Whitespaces
+set list
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:⌴
 
-" Easy buffer navigation
-noremap <leader>h <C-w>h
-noremap <leader>j <C-w>j
-noremap <leader>k <C-w>k
-noremap <leader>l <C-w>l
+" Split behaviour
+set splitright
+set splitbelow
 
-filetype plugin indent on
+" Leader
+let mapleader=','
 
-" Tabs
-nnoremap <leader><Left> :tabPrevious<CR>
-nnoremap <leader><Right> :tabNext<CR>
-nnoremap <leader>0 :tabfirst<CR>
-nnoremap <leader>$ :tablast<CR>
-nnoremap <leader>1 1gt
-nnoremap <leader>2 2gt
-nnoremap <leader>3 3gt
-nnoremap <leader>4 4gt
-nnoremap <leader>5 5gt
-nnoremap <leader>6 6gt
-nnoremap <leader>7 7gt
-nnoremap <leader>8 8gt
-nnoremap <leader>9 9gt
+" Search stuff
+set ignorecase
+set smartcase
+set showmatch
 
-inoremap <leader><Left> <Esc>:tabprevious<CR>i
-inoremap <leader><Right> <Esc>:tabNext<CR>i
-inoremap <leader>0 <Esc>:tabfirst<CR>i
-inoremap <leader>$ <Esc>:tablast<CR>i
-inoremap <leader>1 <C-O>1gt
-inoremap <leader>2 <C-O>2gt
-inoremap <leader>3 <C-O>3gt
-inoremap <leader>4 <C-O>4gt
-inoremap <leader>5 <C-O>5gt
-inoremap <leader>6 <C-O>6gt
-inoremap <leader>7 <C-O>7gt
-inoremap <leader>8 <C-O>8gt
-inoremap <leader>9 <C-O>9gt
+" File management
+set autowrite
+set autoread
+nnoremap s :w<CR>
 
-" Clipboards
-noremap <Leader>yy "*y
-noremap <leader>yp "*p
-noremap <Leader>yY "+y
-noremap <Leader>yP "+p
+" Window management
+nnoremap <leader>c :close<CR>
+nnoremap <leader>o :only<CR>
+
+" Quickly hide hightlight
+nnoremap <leader><space> :noh<cr>
+
+" Paste toggle
+set pastetoggle=<F2>
 
 " Duplicate line
-noremap <Leader>y yyp
-inoremap <Leader>y <Esc>yypi
+noremap <Leader>y "zY"zp
+inoremap <Leader>y <Esc>"zY"zpi
 
 " Delete line
 noremap <Leader>d dd
 inoremap <Leader>d <C-O>dd
 
-" indendation stuff
-set tabstop=4 shiftwidth=4 expandtab
-set backspace=indent,eol,start
-
-" reload a file if changed
-set autoread
-set pastetoggle=<F2>
-
-" For statusbar
-set laststatus=2
-
-" Download vim-plug
+" Autoinstall vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree'
+call plug#begin(stdpath('data') . '/plugged')
+" Interface
+Plug 'vim-airline/vim-airline' " Status bar
+Plug 'altercation/vim-colors-solarized' " Colour scheme
+
+" Misc
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'christoomey/vim-tmux-navigator' " Tmux integration
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+
+" VSC
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-commentary'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Installed with pacman
-" Plug 'junegunn/fzf'
+
+" Fuzzy finder
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+
+" Coding
+Plug 'tpope/vim-commentary' " Comment/uncommend stuff
 Plug 'hashivim/vim-terraform'
+Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
+
 call plug#end()
 
-" For OSX
-" set rtp+=/usr/local/opt/fzf/bin
-set rtp+=/usr/local/opt/fzf
+" Colour scheme
+syntax enable
+colorscheme solarized
+set background=dark
+set cursorline
 
-" vimgutter relies on this value to refresh signs
+" vim-gitgutter use this value to update signs
 set updatetime=100
 
-" Leader-N toggle NerdTree
+" NERDTree
 map <leader>N :NERDTreeToggle<CR>
 
-" If no files were specified fire NerdTree
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" Show powerline fonts
+" Use powerline fonts
 let g:airline_powerline_fonts = 1
 
-" reload a file if changed
-set autoread
-" use F2 to toggle paste
-set pastetoggle=<F2>
-
-" For statusbar
+" Always show statusbar
 set laststatus=2
 
-" Show powerline fonts
-let g:airline_powerline_fonts = 1
+" FZF
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
 
-" Useful custom commands
-command! Reload execute "source ~/.vimrc"
-command! Filename execute ":echo expand('%:p')"
-command! Config execute ":e $MYVIMRC"
-
-" Abbreviations
-iabbr _AC Alessandro Cunsolo
-iabbr __AC alessandro.cunsolo@gmail.com
-
-iabbr ERR
-\if err != nil {
-\<CR>
-\<CR>}
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-" Revert with: ":delcommand DiffOrig".
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
-endif
-
-" add yaml stuffs
+" YAML
 augroup FileType_yaml
     " use 2 spaces tab instead of 4
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
 
-" Go stuff
+" GO
 augroup FileType_go
     autocmd!
     " Autocomplete
@@ -206,7 +144,6 @@ augroup FileType_go
     autocmd FileType go nmap <leader>r  <Plug>(go-run)
     autocmd FileType go nmap <leader>i  <Plug>(go-info)
 augroup END
-
 " go-vim plugin specific commands
 " Also run `goimports` on your current file on every save
 " Might be be slow on large codebases, if so, just comment it out
@@ -219,12 +156,44 @@ let g:go_list_type = "quickfix"
 
 let g:go_autotype_info = 1
 
-" Navigate quickfix
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
-
+" Vagrant
 augroup vagrant
-    au!
-    au BufRead,BufNewFile Vagrantfile setlocal filetype=ruby ts=2 sts=2 expandtab
+    autocmd!
+    autocmd BufRead,BufNewFile Vagrantfile setlocal filetype=ruby ts=2 sts=2 sw=2 expandtab
 augroup END
+
+" Jenkinsfile
+augroup jenkins
+    autocmd!
+    autocmd BufRead,BufNewFile Jenkinsfile setlocal filetype=groovy ts=4 sts=4 sw=4 expandtab
+augroup END
+
+" Remove trailing spaces
+" http://vimcasts.org/episodes/tidying-whitespace/
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+
+" Clipboard
+if has("macunix")
+  set clipboard=unnamed
+elseif has("unix")
+  set clipboard=unnamedplus
+endif
+
+" Open file in the same directory of the currently open one
+" http://vimcasts.org/episodes/the-edit-command/
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
