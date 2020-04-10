@@ -79,7 +79,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin(stdpath('data') . '/plugged')
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 " Interface
 Plug 'vim-airline/vim-airline' " Status bar
 Plug 'altercation/vim-colors-solarized' " Colour scheme
