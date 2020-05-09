@@ -1,13 +1,3 @@
-Host github.com
-    HostName github.com
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/id_ed25519_github
-
-Host gitea.network.internal
-    HostName gitea.network.internal
-    IdentitiesOnly yes
-    IdentityFile ~/.ssh/id_ed25519_gitea
-
 Host wecode.sorint.it
     HostName wecode.sorint.it
     IdentitiesOnly yes
