@@ -92,7 +92,6 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export EDITOR=nvim
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -153,6 +152,7 @@ typeset -U path
 # Use NeoVim instead of Vim
 if (( $+commands[nvim] )); then
     alias vim='nvim'
+    export EDITOR=nvim
 fi
 
 autoload -Uz compinit && compinit -i
