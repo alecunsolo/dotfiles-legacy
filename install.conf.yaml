@@ -25,6 +25,9 @@
     ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting:
       create: true
       path: zsh/plugins/zsh-syntax-highlighting
+    ~/.oh-my-zsh/custom/themes/powerlevel10k:
+      create: true
+      path: zsh/themes/powerlevel10k
     ~/.oh-my-zsh/custom/themes/agnoster.zsh-theme:
       create: true
       path: zsh/themes/agnoster.zsh-theme
