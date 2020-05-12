@@ -162,6 +162,7 @@ if (( $+commands[nvim] )); then
     export EDITOR=nvim
 fi
 
+fpath=($fpath ~/.zsh/completion)
 autoload -Uz compinit && compinit -i
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

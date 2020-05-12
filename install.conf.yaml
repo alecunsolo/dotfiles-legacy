@@ -54,4 +54,5 @@
     ~/.config/nvim/init.vim:
       create: true
       path: init.vim
-
+- create:
+  - ~/.zsh/completion
