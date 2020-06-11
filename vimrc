@@ -14,6 +14,9 @@ set hidden
 command! ConfReload execute "source $MYVIMRC"
 command! ConfEdit execute ":edit $MYVIMRC"
 
+" Disable Ex mode
+nmap Q <Nop>" Line numbers
+
 " Line numbers
 set number
 set relativenumber
