@@ -47,6 +47,10 @@ set splitbelow
 " Leader
 let mapleader=','
 
+" Split open
+nnoremap gv :vertical wincmd f<CR>
+nnoremap gs :above wincmd f<CR>
+
 " Search stuff
 set ignorecase
 set smartcase
