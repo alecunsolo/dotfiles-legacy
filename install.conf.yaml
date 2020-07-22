@@ -10,7 +10,6 @@
   - '~/.gnupg'
   - '~/.gitconfig.d'
   - '~/.config/kube'
-  - '~/.oh-my-zsh'
   - '~/.config/nvim'
 - defaults:
     link:
