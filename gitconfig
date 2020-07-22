@@ -14,6 +14,4 @@
 	signingkey = FD5DD82C1D58E115!
 [include]
     path = ~/.gitconfig.local
- 
-[commit]
-	gpgsign = true
+
