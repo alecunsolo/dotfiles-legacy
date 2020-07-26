@@ -118,7 +118,7 @@ call plug#end()
 
 " Colour scheme
 syntax enable
-colorscheme solarized
+silent! colorscheme solarized
 set background=dark
 set cursorline
 
