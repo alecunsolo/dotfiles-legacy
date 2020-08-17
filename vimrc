@@ -15,7 +15,7 @@ command! ConfReload execute "source $MYVIMRC"
 command! ConfEdit execute ":edit $MYVIMRC"
 
 " Disable Ex mode
-nmap Q <Nop>" Line numbers
+nmap Q <Nop>
 
 " Line numbers
 set number
@@ -93,6 +93,7 @@ call plug#begin('~/.vim/plugged')
 " Interface
 Plug 'vim-airline/vim-airline' " Status bar
 Plug 'altercation/vim-colors-solarized' " Colour scheme
+Plug 'morhetz/gruvbox' " Another colour scheme
 
 " Misc
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -117,8 +118,9 @@ Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 " Colour scheme
+let g:gruvbox_italic=1
 syntax enable
-silent! colorscheme solarized
+silent! colorscheme gruvbox
 set background=dark
 set cursorline
 
