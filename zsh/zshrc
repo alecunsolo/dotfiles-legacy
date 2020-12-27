@@ -105,12 +105,6 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-## Memory overview
-memusage() {
-    ps aux | awk '{if (NR > 1) print $5;
-                   if (NR > 2) print "+"}
-                   END { print "p" }' | dc
-}
 
 _autoload_custom() {
     if [[ -d $1 ]]; then
@@ -132,24 +126,8 @@ setopt autonamedirs
 setopt noclobber
 setopt appendcreate
 
-# Common aliases
-alias grep='grep --color=auto'
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
-alias sysdreload='systemctl --user daemon-reload'
-alias find='noglob find'
-alias sudo='sudo '
-alias vzsh="vim ~/.zshrc"
-alias gfop="git fetch origin --prune"
-
-# Add alias to prune local branches that where merged
-alias gplb="git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d"
 if [[ -d ~/.dotfiles ]]; then
     alias dot='cd ~/.dotfiles'
-fi
-if [[ -d ~/.dotfiles-local ]]; then
-    alias dotl='cd ~/.dotfiles-local'
 fi
 
 # Turn off kube prompt
@@ -169,18 +147,6 @@ autoload -Uz compinit && compinit -i
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-function kube-toggle() {
-  if (( ${+POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND} )); then
-    unset POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND
-  else
-    POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito'
-  fi
-  p10k reload
-  if zle; then
-    zle push-input
-    zle accept-line
-  fi
-}
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#6b757c"
 
 # Start or attach to a tmux session with the given name ('main' as default)
@@ -188,10 +154,3 @@ function txa() {
     tmux new-session -A -s ${1:-main}
 }
 
-# Python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi

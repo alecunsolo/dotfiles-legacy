@@ -2,16 +2,6 @@
 configureMac() {
     plugins+=(brew)
 
-    export LANG='en_US.UTF-8'
-
-    alias b='brew'
-    alias bco='brew cask outdated'
-    alias bi='brew info'
-    alias bs='brew search'
-    alias bins='brew install'
-    alias bci='brew cask info'
-    alias bcins='brew cask install'
-
     # Use gnu-sed instead of sed
     path=(
         /usr/local/opt/gnu-sed/libexec/gnubin
@@ -32,6 +22,20 @@ configureLinux() {
     )
 }
 
+configureGpg() {
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    gpgconf --launch gpg-agent 2>&1 > /dev/null
+}
+
+configurePyenv() {
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    if command -v pyenv 1>/dev/null 2>&1; then
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
+    fi
+}
+
 case "$OSTYPE" in
   solaris*) echo "SOLARIS" ;;
   darwin*)  configureMac ;;
@@ -41,10 +45,5 @@ case "$OSTYPE" in
   *)        echo "unknown: $OSTYPE" ;;
 esac
 
-# common
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent 2>&1 > /dev/null
-
-alias -g L=' | less'
-alias -g B=' | bat'
-alias -g BY=' | bat -l yaml'
+configureGpg
+configurePyenv
