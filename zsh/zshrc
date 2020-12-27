@@ -91,11 +91,13 @@ plugins=(
     zsh-syntax-highlighting
 )
 
-if [[ -d ~/.zshrc.d ]]; then
-    for i in ~/.zshrc.d/*.conf(^/DN:i); do
-        source $i
-    done
-fi
+# Load custom scripts before oh my zsh initialization
+# (setting plugins and all)
+for config_file ($ZSH_CUSTOM/*.pre-zsh(N)); do
+    source $config_file
+done
+unset config_file
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
