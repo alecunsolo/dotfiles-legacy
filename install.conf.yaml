@@ -5,7 +5,7 @@
   - [tools/setup-gpg.sh, Initialize gpg directory]
 - clean:
   -  '~'
-  - '~/.zshrc.d'
+  - '~/.oh-my-zsh-custom'
   - '~/.ssh/config.d'
   - '~/.gnupg'
   - '~/.gitconfig.d'
