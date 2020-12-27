@@ -1,3 +1,6 @@
+" Not always using recent versions
+set nocompatible
+
 " Four spaces is enough for a tab
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
