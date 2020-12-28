@@ -1,8 +1,4 @@
 # vim:ft=zsh
-plugins+=(fzf)
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .snapshots'
-export FZF_DEFAULT_OPTS='--ansi --reverse
-    --bind ctrl-f:page-down,ctrl-b:page-up'
 
 #   ____                           _
 #  / ___| ___ _ __   ___ _ __ __ _| |
@@ -68,18 +64,23 @@ function ssh-key-to-clip() {
     # http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion
     # ${+name}
     #   If name is the name of a set parameter ‘1’ is substituted, otherwise ‘0’ is substituted.
-    if (( $+commands[xclip] )); then
-        local keys
-        if [[ -n "$1" ]]; then
-            keys=$(fd --type f '\.pub$' ~/.ssh | fzf --ansi --sort -m -q $1)
-        else
-            keys=$(fd --type f '\.pub$' ~/.ssh | fzf --ansi --sort -m)
-        fi
-        [[ -n "$keys" ]] && xclip -in -selection clipboard $keys
-        return 0
+    local keys
+    if [[ -n "$1" ]]; then
+        keys=$(fd --type f '\.pub$' ~/.ssh | fzf --ansi --sort -m -q $1)
     else
-        print "ssh-clip-key: xclip not installed" >&2
+        keys=$(fd --type f '\.pub$' ~/.ssh | fzf --ansi --sort -m)
     fi
+    if [[ -n "$keys" ]]; then
+        if (( $+commands[xclip] )); then
+            xclip -in -selection clipboard $key
+        elif (( $+commands[pbcopy] )); then
+            echo $keys | pbcopy
+        else
+            print "ssh-clip-key: xclip/pbcopy not installed" >&2
+            return 1
+        fi
+    fi
+    return 0
 }
 
 # Show ssh-config
@@ -160,7 +161,7 @@ function gi() {
         ))
     fi
     if (( ${#ignored} )); then
-        curl --silent --show-error "https://www.toptal.com/developers/gitignore/api/${(j:,:)ignored}" > .gitignore
+        curl --silent --show-error "https://www.toptal.com/developers/gitignore/api/${(j:,:)ignored}" >> .gitignore
     fi
 }
 
@@ -171,36 +172,6 @@ function g-sb() {
     local br
     br=$(git --no-pager branch | cut -c 3- | fzf)
     [[ -n $br ]] && git switch $br
-}
-
-# Clone a repository from gitea
-function fgitea() {
-    local project giteaUrl sshUrl token
-    sshUrl=gitea@gitea.network.internal
-    giteaUrl=https://gitea.network.internal
-    token=$(cat < ~/.gitea.token)
-    # return 0
-    project=$( eval "curl --silent --show-error \"$giteaUrl/api/v1/repos/search\" -H \"accept: application/json\" -H \"Authorization: token $token\"" |\
-        jq  -r '.data[].full_name' |\
-        fzf --ansi +m
-    )
-    [[ -n $project ]] && git clone "${sshUrl}:${project}"
-    return 0
-}
-
-# Clone a repository from gitlab
-function fgitlab() {
-    local project labUrl sshUrl token
-    sshUrl=git@gitlab.skytech.local
-    gitUrl=http://gitlab.skytech.local
-    token=$(cat < ~/.gitlab.sky.token)
-    # return 0
-    project=$( eval "curl --silent --show-error \"$gitUrl/api/v4/projects\" -H \"accept: application/json\" -H \"Private-Token: $token\"" |\
-        jq  -r '.[].path_with_namespace' |\
-        fzf --ansi +m
-    )
-    [[ -n $project ]] && git clone "${sshUrl}:${project}"
-    return 0
 }
 
 #  ____
@@ -233,3 +204,19 @@ function pac-interactive-remove() {
     (( ${#packages})) && yay -Rns $packages
 }
 
+# _____
+# |_   _| __ ___  _   ___  __
+#  | || '_ ` _ \| | | \ \/ /
+#  | || | | | | | |_| |>  <
+#  |_||_| |_| |_|\__,_/_/\_\
+# Interacive attach
+function tattach() {
+    session=$(tmux list-sessions | fzf --ansi --no-multi --reverse | awk -F ':' '{print $1}')
+    [[ -z $session ]] && return 0
+    if [[ -n $TMUX ]]; then
+        action='switch-client'
+    else
+        action='attach-session'
+    fi
+    tmux $action -t $session
+}
