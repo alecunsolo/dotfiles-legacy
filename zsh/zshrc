@@ -76,13 +76,15 @@ ZSH_CUSTOM=~/.oh-my-zsh-custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    # Common
+    colored-man-pages
+    copydir
+    copyfile
+    encode64
     git
     git-flow
     history
     man
-    # Autoload pyenv and pyenv virtualenv automatically
-    pyenv
+    pyenv # Autoload pyenv and pyenv virtualenv automatically
     rsync
     sudo
     themes
@@ -118,6 +120,10 @@ case "$OSTYPE" in
   darwin*)  export INIT_MACOS=true ;;
   linux*)   export INIT_LINUX=true ;;
 esac
+
+if [[ -n $INIT_MACOS ]]; then
+    plugins+=(osx)
+fi
 
 source $ZSH/oh-my-zsh.sh
 

@@ -1,23 +1,5 @@
 # Miscellaneus functions
 
-# Base64 decode
-function b64d() {
-    if [[ -n "$1" ]]; then
-        echo "$1" | base64 -d
-        return $?
-    fi
-    return 1
-}
-
-# Base64 encode
-function b64e() {
-    if [[ -n "$1" ]]; then
-        echo "$1" | base64
-        return $?
-    fi
-    return 1
-}
-
 # Create a temporary directory and go there
 function mkdt() {
     local dir

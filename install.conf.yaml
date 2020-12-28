@@ -28,10 +28,6 @@
       path: zsh/themes/powerlevel10k
     ~/.p10k.zsh: zsh/p10k.zsh
     ~/.zshrc: zsh/zshrc
-    ~/.zsh-functions/:
-      glob: true
-      path: zsh/zsh-functions/*
-      create: true
     ~/.oh-my-zsh-custom/:
       glob: true
       path: zsh/zshrc.d/*
