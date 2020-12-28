@@ -9,7 +9,6 @@
   - '~/.oh-my-zsh-custom/scripts'
   - '~/.ssh/config.d'
   - '~/.gnupg'
-  - '~/.gitconfig.d'
   - '~/.config/kube'
   - '~/.config/nvim'
 - defaults:
@@ -46,7 +45,7 @@
     ~/.tmux/plugins/tpm:
       create: true
       path: tmux/tpm
-    ~/.gitconfig: gitconfig
+    ~/.gitconfig: git/gitconfig
     ~/.ssh/config: ssh/config
     ~/.ssh/config.d/:
       glob: true
