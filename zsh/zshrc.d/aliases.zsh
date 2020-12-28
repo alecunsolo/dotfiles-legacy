@@ -18,14 +18,3 @@ alias -g L=' | less'
 alias -g B=' | bat'
 alias -g BY=' | bat -l yaml'
 
-# Brew aliases  
-if (( $+commands[brew] )); then
-    alias b='brew'
-    alias bco='brew outdated --cask'
-    alias bi='brew info'
-    alias bs='brew search'
-    alias bins='brew install'
-    alias bci='brew info --cask'
-    alias bcins='brew install --cask'
-fi
-

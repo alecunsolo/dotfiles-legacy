@@ -1,4 +1,13 @@
-# vim:ft=zsh
+[[ -n $INIT_FZF ]] || return
+
+#   ____             __ _
+#  / ___|___  _ __  / _(_) __ _
+# | |   / _ \| '_ \| |_| |/ _` |
+# | |__| (_) | | | |  _| | (_| |
+#  \____\___/|_| |_|_| |_|\__, |
+#                         |___/
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .snapshots --exclude .git'
+export FZF_DEFAULT_OPTS='--ansi --reverse --bind ctrl-f:page-down,ctrl-b:page-up'
 
 #   ____                           _
 #  / ___| ___ _ __   ___ _ __ __ _| |

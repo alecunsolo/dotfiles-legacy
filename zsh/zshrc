@@ -81,28 +81,42 @@ plugins=(
     git-flow
     history
     man
+    # Autoload pyenv and pyenv virtualenv automatically
+    pyenv
     rsync
     sudo
     themes
-    tmux
-    tmuxinator
     zsh-autosuggestions
-    zsh_reload
     zsh-syntax-highlighting
+    zsh_reload
 )
 
-# FZF
-if (( $+commands[fzf] )); then
-    plugins+=(fzf)
-    export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .snapshots --exclude .git'
-    export FZF_DEFAULT_OPTS='--ansi --reverse --bind ctrl-f:page-down,ctrl-b:page-up'
-fi
-# Load custom scripts before oh my zsh initialization
-# (setting plugins and all)
-for config_file ($ZSH_CUSTOM/*.pre-zsh(N)); do
-    source $config_file
-done
-unset config_file
+initIfCommand() {
+    local _command _plugin _env_flag
+    _command=$1
+    _env_flag=$2
+    _plugin=$3
+    if (($+commands[$_command] )); then
+        export INIT_$_env_flag=true
+        if [[ -n $_plugin ]]; then
+            plugins+=($_plugin)
+        fi
+    fi
+}
+
+initIfCommand systemctl SYSTEMD systemd
+initIfCommand apt-get DEBIAN debian
+initIfCommand pacman ARCH archlinux
+initIfCommand brew BREW brew
+initIfCommand fzf FZF fzf
+initIfCommand tmux TMUX tmux
+initIfCommand tmux TMUX tmuxinator
+
+unset -f initIfCommand
+case "$OSTYPE" in
+  darwin*)  export INIT_MACOS=true ;;
+  linux*)   export INIT_LINUX=true ;;
+esac
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,53 +125,28 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-
-_autoload_custom() {
-    if [[ -d $1 ]]; then
-        local -a f
-        # ^/ Not directories
-        # N -> Set NULL_GLOB
-        # D -> Set DOT_GLOB
-        # :A -> realpath (follow symlinks)
-        f=( $1/*(^/ND:A) )
-        [[ $#f -ne 0 ]] && autoload -Uz $f
-    fi
-}
-
-_autoload_custom ~/.zsh-functions
-_autoload_custom ~/.zsh-local-functions
-
-setopt rmstarwait
-setopt autonamedirs
-setopt noclobber
-setopt appendcreate
-
-if [[ -d ~/.dotfiles ]]; then
-    alias dot='cd ~/.dotfiles'
-fi
-
-# Turn off kube prompt
-KUBE_PS1_ENABLED=false
-
-path=(~/bin $path)
-typeset -U path
-
+export EDITOR=vim
 # Use NeoVim instead of Vim
 if (( $+commands[nvim] )); then
     alias vim='nvim'
     export EDITOR=nvim
 fi
 
-fpath=($fpath ~/.zsh/completion)
-autoload -Uz compinit && compinit -i
+# GPG/ssh agent
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent 2>&1 > /dev/null
+
+setopt rmstarwait
+setopt autonamedirs
+setopt noclobber
+setopt appendcreate
+
+# Add ~/bin to path
+path=(~/bin $path)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Start or attach to a tmux session with the given name ('main' as default)
-function txa() {
-    tmux new-session -A -s ${1:-main}
-}
-
 # Directiries
 code=~/code
+dot=~/.dotfiles
