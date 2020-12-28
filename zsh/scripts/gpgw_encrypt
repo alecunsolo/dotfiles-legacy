@@ -1,0 +1,71 @@
+#!/usr/bin/env zsh
+
+encrypt() {
+    setopt localoptions pipefail
+    local self src='alessandro.cunsolo@gmail.com'
+    local -a o_recp
+    local -A opts
+    self='alessandro.cunsolo@gmail.com'
+    src=$1
+    o_recp=( -r $self )
+
+    # Parse options
+    zparseopts -D -E -F -K -A opts -M -- \
+        o: -out:=o  \
+        S -no-sign=S \
+        a -armor=a \
+        r+:=o_recp -recipient+:=r
+    (( $? )) && {
+        echo "Failed to parse options" 1>&2
+        return 1
+    }
+    # Check parameter
+    if [[ -z $src ]]; then
+        echo "Must pass a source file/directory to encrypt" 1>&2
+        return 1
+    fi
+    # Print options
+    # for myOption in "${(k@)opts}"; do
+    #     echo "Key: $myOption - Value: $opts[$myOption]"
+    # done
+
+    # Sign
+    if (( ! ${+opts[-S]} )); then
+        sign='--sign'
+    fi
+    # Armor
+    if (( ${+opts[-a]} )); then
+        armor='--armor'
+        armorSuffix='.asc'
+    fi
+
+    if [[ -f $src ]]; then
+        # Encrypt regular file
+        # Output
+        if (( ${+opts[-o]} )); then
+            out=${opts[-o]}
+        else
+            out="${src}.gpg${armorSuffix}"
+        fi
+
+        gpg $o_recp $sign $armor --output $out --encrypt $src
+        return $?
+    fi
+    if [[ -d $src ]]; then
+        # Encrypt a directory
+        # Output
+        if (( ${+opts[-o]} )); then
+            out=${opts[-o]}
+        else
+            out="${src}.tar.gpg${armorSuffix}"
+        fi
+
+        #echo "tar -C $src | gpg $o_recp $sign $armor --output $out --encrypt"
+        tar -c $src | gpg $o_recp $sign $armor --output $out --encrypt
+        return $?
+    fi
+    echo "$src is not a file or a directory"
+    return 1
+}
+
+encrypt "$@"

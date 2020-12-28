@@ -6,6 +6,7 @@
 - clean:
   -  '~'
   - '~/.oh-my-zsh-custom'
+  - '~/.oh-my-zsh-custom/scripts'
   - '~/.ssh/config.d'
   - '~/.gnupg'
   - '~/.gitconfig.d'
@@ -36,6 +37,10 @@
     ~/.oh-my-zsh-custom/:
       glob: true
       path: zsh/zshrc.d/*
+      create: true
+    ~/.oh-my-zsh-custom/scripts/:
+      glob: true
+      path: zsh/scripts/*
       create: true
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/plugins/tpm:

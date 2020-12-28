@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+decrypt() {
+    setopt localoptions pipefail
+    local src
+    src=$1
+
+    # Check parameter
+    if [[ -z $src ]]; then
+        echo "Must pass a file to decrypt" 1>&2
+        return 1
+    fi
+
+    gpg --decrypt $src
+    return $?
+}
+
+decrypt "$@"
