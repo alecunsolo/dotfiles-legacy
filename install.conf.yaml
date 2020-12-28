@@ -16,7 +16,6 @@
       relink: true
 - link:
     ~/.dotfiles: ''
-    ~/.vimrc: vimrc
     ~/.oh-my-zsh: zsh/oh-my-zsh
     ~/.oh-my-zsh-custom/plugins/zsh-autosuggestions:
       create: true
@@ -52,8 +51,9 @@
       path: ssh/config.d/*
     ~/.gnupg/gpg.conf: gpg/gpg.conf
     ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
+    ~/.vimrc: vim/vimrc
     ~/.config/nvim/init.vim:
       create: true
-      path: init.vim
+      path: vim/init.vim
 - create:
   - ~/.zsh/completion
