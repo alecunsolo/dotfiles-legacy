@@ -114,6 +114,7 @@ initIfCommand brew BREW brew
 initIfCommand fzf FZF fzf
 initIfCommand tmux TMUX tmux
 initIfCommand tmux TMUX tmuxinator
+initIfCommand kubectl KUBERNETES kubectl
 
 unset -f initIfCommand
 case "$OSTYPE" in
