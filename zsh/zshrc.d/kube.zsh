@@ -1,4 +1,4 @@
-[[ -n $INIT_KUBEDRNETES ]] || return
+[[ -n $INIT_KUBERNETES ]] || return
 
 alias ke='kubectl edit'
 alias kg='kubectl get'
