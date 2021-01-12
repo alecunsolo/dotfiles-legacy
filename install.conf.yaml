@@ -5,7 +5,7 @@
   - [tools/setup-gpg.sh, Initialize gpg directory]
 - clean:
   -  '~'
-  - '~/.oh-my-zsh-custom'
+  - '~/.zprezto'
   - '~/.oh-my-zsh-custom/scripts'
   - '~/.ssh/config.d'
   - '~/.gnupg'
@@ -16,35 +16,24 @@
       relink: true
 - link:
     ~/.dotfiles: ''
-    ~/.oh-my-zsh: zsh/oh-my-zsh
-    ~/.oh-my-zsh-custom/plugins/zsh-autosuggestions:
-      create: true
-      path: zsh/plugins/zsh-autosuggestions
-    ~/.oh-my-zsh-custom/plugins/zsh-syntax-highlighting:
-      create: true
-      path: zsh/plugins/zsh-syntax-highlighting
-    ~/.oh-my-zsh-custom/themes/powerlevel10k:
-      create: true
-      path: zsh/themes/powerlevel10k
     ~/.p10k.zsh: zsh/p10k.zsh
+    ~/.zprezto: zsh/prezto
+    ~/.zprezto-contrib: zsh/prezto-contrib
+    ~/.zlogin: zsh/zlogin
+    ~/.zlogout: zsh/zlogout
+    ~/.zpreztorc: zsh/zpreztorc
+    ~/.zprofile: zsh/zprofile
+    ~/.zshenv: zsh/zshenv
     ~/.zshrc: zsh/zshrc
-    ~/.oh-my-zsh-custom/:
-      glob: true
-      path: zsh/zshrc.d/*
-      create: true
-    ~/.oh-my-zsh-custom/scripts/:
-      glob: true
-      path: zsh/scripts/*
-      create: true
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/plugins/tpm:
       create: true
       path: tmux/tpm
     ~/.gitconfig: git/gitconfig
     ~/.ssh/config: ssh/config
-    ~/.ssh/config.d/:
-      glob: true
-      path: ssh/config.d/*
+    # ~/.ssh/config.d/:
+    #   glob: true
+    #   path: ssh/config.d/*
     ~/.gnupg/gpg.conf: gpg/gpg.conf
     ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
     ~/.vimrc: vim/vimrc
