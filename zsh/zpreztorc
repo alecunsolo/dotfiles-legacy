@@ -41,8 +41,13 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'syntax-highlighting' \
+  'clipboard' \
+  'reload' \
   'prompt' \
-  'gnu-utility'
+  'gnu-utility' \
+  'contrib-git' \
+  'kubernetes' \
+  'fzf'
 
 #
 # Autosuggestions
@@ -78,7 +83,7 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 # zstyle ':prezto:module:git:status:ignore' submodules 'all'
-
+zstyle -t ':prezto:module:git:alias' skip 'yes'
 #
 # GNU Utility
 #
