@@ -25,3 +25,11 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Re-run compinit to enable 'custom' completion
+autoload -Uz compinit
+_comp_path="${XDG_CACHE_HOME:-$HOME/.cache}/prezto/zcompdump"
+mkdir -p "$_comp_path:h"
+compinit -i -d "$_comp_path"
+touch "$_comp_path"
+unset _comp_path
+
