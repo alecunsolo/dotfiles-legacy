@@ -239,3 +239,8 @@ endif
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" 1. base64-encode(visual-selection) -> F2 -> encoded base64-string
+:vnoremap <F6> c<c-r>=system("base64 ", @")<cr><esc>
+
+" 2. base64-decode(visual-selection) -> F3 -> decoded string
+:vnoremap <F7> c<c-r>=system("base64 -d", @")<cr>
