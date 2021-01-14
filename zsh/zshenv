@@ -17,3 +17,5 @@ else
 fi
 
 typeset -xg LANG=en-us.UTF-8
+typeset -xg LC_CTYPE=en_US.UTF-8
+typeset -xg LC_ALL=en_US.UTF-8
