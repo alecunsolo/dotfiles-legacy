@@ -1,0 +1,7 @@
+emulate -L zsh
+
+local file
+file=$(fd -tf ${1:-.} ~/.dotfiles | fzf +m --preview 'bat --style=numbers --color=always --line-range :500 {}')
+if [[ -n $file ]]; then
+    $EDITOR $file
+fi

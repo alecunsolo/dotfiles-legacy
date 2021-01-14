@@ -1,0 +1,9 @@
+emulate -L zsh
+cd ~/code
+local dir
+dir=$(fd -td ${1:-.} | fzf +m --exit-0 --select-1)
+if [[ -n $dir ]] ; then
+    cd $dir
+else
+    cd -
+fi

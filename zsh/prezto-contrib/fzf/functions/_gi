@@ -1,0 +1,4 @@
+#compdef gi
+local -a ignored
+ignored=( $(curl -s https://www.toptal.com/developers/gitignore/api/list | tr ',' '\n' ))
+_describe 'ignored' ignored
