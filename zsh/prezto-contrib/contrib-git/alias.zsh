@@ -11,7 +11,7 @@ git_version="${${(As: :)$(git version 2>/dev/null)}[3]}"
 # the plugin, before being pulled in to core lib/git.zsh as git_current_branch()
 # to fix the core -> git plugin dependency.
 function current_branch() {
-  git-current-branch
+  git-branch-current
 }
 
 # Pretty log messages
@@ -112,12 +112,12 @@ alias gg='git gui citool'
 alias gga='git gui citool --amend'
 
 function ggf() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  [[ "$#" != 1 ]] && local b="$(git-branch-current)"
   git push --force origin "${b:=$1}"
 }
 compdef _git ggf=git-checkout
 function ggfl() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  [[ "$#" != 1 ]] && local b="$(git-branch-current)"
   git push --force-with-lease origin "${b:=$1}"
 }
 compdef _git ggfl=git-checkout
@@ -126,7 +126,7 @@ function ggl() {
   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
     git pull origin "${*}"
   else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+    [[ "$#" == 0 ]] && local b="$(git-branch-current)"
     git pull origin "${b:=$1}"
   fi
 }
@@ -136,7 +136,7 @@ function ggp() {
   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
     git push origin "${*}"
   else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+    [[ "$#" == 0 ]] && local b="$(git-branch-current)"
     git push origin "${b:=$1}"
   fi
 }
@@ -152,17 +152,17 @@ function ggpnp() {
 compdef _git ggpnp=git-checkout
 
 function ggu() {
-  [[ "$#" != 1 ]] && local b="$(git_current_branch)"
+  [[ "$#" != 1 ]] && local b="$(git-branch-current)"
   git pull --rebase origin "${b:=$1}"
 }
 compdef _git ggu=git-checkout
 
 alias ggpur='ggu'
-alias ggpull='git pull origin "$(git_current_branch)"'
-alias ggpush='git push origin "$(git_current_branch)"'
+alias ggpull='git pull origin "$(git-branch-current)"'
+alias ggpush='git push origin "$(git-branch-current)"'
 
-alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
-alias gpsup='git push --set-upstream origin $(git_current_branch)'
+alias ggsup='git branch --set-upstream-to=origin/$(git-branch-current)'
+alias gpsup='git push --set-upstream origin $(git-branch-current)'
 
 alias ghh='git help'
 
@@ -216,7 +216,7 @@ alias grbs='git rebase --skip'
 alias grev='git revert'
 alias grh='git reset'
 alias grhh='git reset --hard'
-alias groh='git reset origin/$(git_current_branch) --hard'
+alias groh='git reset origin/$(git-branch-current) --hard'
 alias grm='git rm'
 alias grmc='git rm --cached'
 alias grmv='git remote rename'
