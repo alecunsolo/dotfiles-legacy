@@ -17,6 +17,8 @@ unset __KUBECTL_COMPLETION_FILE
 alias k=kubectl
 alias kg='kubectl get'
 alias ke='kubectl edit'
+alias -g _Y='-o yaml'
+alias -g _SY="-o yaml | yq eval 'del(.metadata.managedFields) | del(.status)' -"
 
 # Execute a kubectl command against all namespaces
 alias kca='_kca(){ kubectl "$@" --all-namespaces;  unset -f _kca; }; _kca'
