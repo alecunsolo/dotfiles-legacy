@@ -49,6 +49,7 @@ zstyle ':prezto:load' pmodule \
   'kubernetes' \
   'fzf' \
   'tmux' \
+  'contrib-python' \
   'contrib-brew'
 
 #
