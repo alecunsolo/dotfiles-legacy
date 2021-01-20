@@ -38,13 +38,13 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'directory' \
   'spectrum' \
+  'gnu-utility' \
   'utility' \
   'completion' \
   'syntax-highlighting' \
   'clipboard' \
   'reload' \
   'prompt' \
-  'gnu-utility' \
   'contrib-git' \
   'kubernetes' \
   'fzf' \
