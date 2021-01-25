@@ -31,9 +31,9 @@
       path: tmux/tpm
     ~/.gitconfig: git/gitconfig
     ~/.ssh/config: ssh/config
-    # ~/.ssh/config.d/:
-    #   glob: true
-    #   path: ssh/config.d/*
+    ~/.ssh/config.d/:
+      glob: true
+      path: ssh/config.d/*
     ~/.gnupg/gpg.conf: gpg/gpg.conf
     ~/.gnupg/gpg-agent.conf: gpg/gpg-agent.conf
     ~/.vimrc: vim/vimrc
