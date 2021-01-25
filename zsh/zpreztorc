@@ -50,7 +50,8 @@ zstyle ':prezto:load' pmodule \
   'fzf' \
   'tmux' \
   'contrib-python' \
-  'contrib-brew'
+  'contrib-brew' \
+  'odds-and-ends'
 
 #
 # Autosuggestions

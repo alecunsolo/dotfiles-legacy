@@ -1,4 +1,9 @@
-# Miscellaneus functions
+# Start or attach to a tmux session with the given name ('main' as default)
+function txa() {
+    tmux new-session -A -s ${1:-main}
+}
+
+alias tmuxp='PYENV_VERSION=tmuxp tmuxp'
 
 # Create a temporary directory and go there
 function mkdt() {
